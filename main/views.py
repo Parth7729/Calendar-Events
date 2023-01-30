@@ -24,7 +24,9 @@ def GoogleCalendarInitView(request):
 
     flow.redirect_uri = REDIRECT_URL
 
-    authorization_url, state = flow.authorization_url()
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true')
 
     request.session['state'] = state
 
